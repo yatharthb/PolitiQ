@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Senate Quiz — PolitiQ</title>
+  <meta name="description" content="Name every current U.S. Senator in 15 minutes." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a href="index.html" class="brand" aria-label="PolitiQ home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Politi<em>Q</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="senators.html" class="active">Senate Quiz</a>
+        <a href="house.html">House Quiz</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="quiz-head">
+      <div class="container">
+        <span class="eyebrow">Quiz · Upper chamber</span>
+        <h1>Name every U.S. Senator</h1>
+        <p>Two senators per state, one hundred in all. You have 15 minutes. Type a name and we'll match it as you go — last names alone work when they're unique.</p>
+      </div>
+    </section>
+
+    <section class="quiz-bar">
+      <div class="container quiz-bar-inner">
+        <div class="score" aria-live="polite"><em id="score">0</em> / <span id="total">100</span></div>
+        <input id="quiz-input" class="quiz-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Press Start, then type a senator's name…" disabled />
+        <div class="timer" id="timer" aria-live="off">15:00</div>
+        <div class="quiz-actions">
+          <button id="btn-start" class="btn">Start</button>
+          <button id="btn-giveup" class="btn ghost" disabled>Give up</button>
+          <button id="btn-reset" class="btn secondary">Reset</button>
+        </div>
+      </div>
+      <div class="container quiz-meta">
+        <span class="legend"><span class="swatch d"></span>Democrat</span>
+        <span class="legend"><span class="swatch r"></span>Republican</span>
+        <span class="legend"><span class="swatch i"></span>Independent</span>
+        <span>Tip: nicknames work too — try "Bernie", "Mitch", or "Liz".</span>
+      </div>
+    </section>
+
+    <section class="quiz-board">
+      <div class="container" id="board"></div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h2 id="modal-title">Time's up.</h2>
+      <p class="big" id="modal-big">0 / 100</p>
+      <p id="modal-sub">Review the names below and try again.</p>
+      <div class="modal-actions">
+        <button class="btn secondary" id="modal-close">Review board</button>
+        <a class="btn" href="house.html">Try the House quiz →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      Roster data from
+      <a href="https://github.com/unitedstates/congress-legislators" target="_blank" rel="noopener">@unitedstates/congress-legislators</a>.
+    </div>
+  </footer>
+
+  <script src="assets/data/senators.js"></script>
+  <script src="assets/quiz.js"></script>
+  <script>
+    initQuiz({ data: window.SENATE_DATA, minutes: 15, showDistrict: false });
+  </script>
+</body>
+</html>
